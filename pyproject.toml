@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ssh-keyaudit-lite"
+version = "0.1.0"
+description = "Audit an SSH authorized_keys file: SHA256 fingerprints, key type, bits, comment; flags DSA, weak RSA and comment-less keys. Read-only."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [{name = "Alessio Auretto"}]
+keywords = [
+  "ssh",
+  "authorized-keys",
+  "ssh-keys",
+  "ssh-key-audit",
+  "fingerprint",
+  "openssh",
+  "security",
+  "sysadmin",
+  "cli",
+  "stdlib",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+  "Topic :: System :: Systems Administration",
+  "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/alessio1999xx-debug/ssh-keyaudit-lite"
+"Pro version" = "https://py-forge.com/products/ssh-keyaudit-fleet-key-inventory"
+
+[project.scripts]
+ssh-keyaudit-lite = "ssh_keyaudit_lite:main"
+
+[tool.setuptools]
+py-modules = ["ssh_keyaudit_lite"]

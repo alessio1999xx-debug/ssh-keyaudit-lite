@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+include pyproject.toml
+include ssh_keyaudit_lite.py
+include test_ssh_keyaudit_lite.py
+recursive-include fixtures *

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+SEO.md
+PUBLISH_NOTES.md
+_src/
+
+# packaging
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
