@@ -1,6 +1,6 @@
-# ssh-keyaudit-lite: audit an SSH authorized_keys file, read-only
+# ssh-keyaudit-lite: audit authorized_keys for weak SSH keys, read-only
 
-ssh-keyaudit-lite helps with a quick look at who can log in to one machine: it reads one `authorized_keys` file and prints, for every key, the SHA256 fingerprint (same format as `ssh-keygen -lf`), the key type, the key size in bits and the comment. It flags DSA keys, RSA keys below 3072 bits, keys with no comment, and lines that are not valid keys. It exits `1` when something is flagged, so it fits a cron job or a pre-check script. It never edits the file. One file, Python 3.9+ standard library only, MIT.
+ssh-keyaudit-lite helps with a quick audit of authorized_keys on one machine: it reads one `authorized_keys` file and prints, for every key, the SHA256 fingerprint (same format as `ssh-keygen -lf`), the key type, the key size in bits and the comment. It flags DSA keys, RSA keys below 3072 bits, keys with no comment, and lines that are not valid keys. It exits `1` when something is flagged, so it fits a cron job or a pre-check script. It never edits the file. One file, Python 3.9+ standard library only, MIT.
 
 Need to audit a whole fleet, find keys reused across hosts, map keys to owners, or get a removal plan? That is the full [SSH KeyAudit](https://py-forge.com/products/ssh-keyaudit-fleet-key-inventory?utm_source=github&utm_medium=readme&utm_campaign=ssh-keyaudit-lite) (one-time payment, yours to keep, no subscription). A table later in this README lists what lite does and what the paid tool adds. Or get every PyForge tool, current and future, with the [All-Access Pass](https://py-forge.com/pass?utm_source=github&utm_medium=readme&utm_campaign=ssh-keyaudit-lite) ($99, one payment).
 
@@ -10,7 +10,9 @@ Need to audit a whole fleet, find keys reused across hosts, map keys to owners, 
 - Fingerprints are computed in Python from the key data; no `ssh-keygen` needed.
 - Flags: `--min-rsa-bits`, `--demo`, `--version`. After `pip install`, use `ssh-keyaudit-lite` in place of `python3 ssh_keyaudit_lite.py`.
 
-<!-- TODO: terminal GIF of `--demo` is still missing. Place it under the intro, before Install. Do not invent a GIF. -->
+![Real terminal demo of `python3 ssh_keyaudit_lite.py --demo`: it flags a weak RSA key, a key with no comment, a DSA key, and an invalid line.](docs/demo.gif)
+
+Recorded on November 24, 2026 with asciinema + agg; real command and output, no simulated results. [Recording source](docs/demo.cast) · [Capture script](docs/record-demo.py).
 
 ## Install
 
@@ -83,6 +85,10 @@ Key types read: RSA, DSA, ECDSA (P-256/384/521), Ed25519, the FIDO `sk-` variant
 # crontab: check every Monday at 07:00, keep the last report
 0 7 * * 1 python3 /opt/ssh_keyaudit_lite.py /home/deploy/.ssh/authorized_keys > /var/log/ssh-keyaudit-lite.txt 2>&1
 ```
+
+## Already using ssh-keygen -l?
+
+`ssh-keygen -lf` already lists type, bits, SHA256 fingerprint and comment for every key in the file. It wins when that is all you need and OpenSSH is installed. This tool adds structured FLAG/OK findings — DSA, RSA below `--min-rsa-bits` (default 3072), missing comments, invalid lines — a cron exit code `1` on findings, and it does not need `ssh-keygen`. It is not a replacement for `ssh-audit`, which checks server/protocol config, not `authorized_keys`.
 
 ## ssh-keyaudit-lite vs SSH KeyAudit
 
