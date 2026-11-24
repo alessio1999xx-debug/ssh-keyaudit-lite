@@ -32,7 +32,7 @@ python3 ssh_keyaudit_lite.py --help
 
 ```bash
 python3 ssh_keyaudit_lite.py --demo
-# ssh-keyaudit-lite 0.1.0: demo (built-in sample authorized_keys)
+# ssh-keyaudit-lite 0.1.1: demo (built-in sample authorized_keys)
 #
 #   OK    line 2: 256 SHA256:ehngEyw0ibJhOPXM8qj4kHqp7PMOVB8whu2zTPeF2Dc alice@laptop (ED25519)
 #   FLAG  line 3: 1024 SHA256:8r4r4yg1OcSAK7Bz9sMFslRJNPLryUYiOko0gbhQGOw bob@old-laptop (RSA)

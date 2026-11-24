@@ -25,7 +25,7 @@ import os
 import sys
 from typing import Dict, List, Optional, Tuple
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 DEFAULT_FILE = os.path.join("~", ".ssh", "authorized_keys")
 DEFAULT_MIN_RSA_BITS = 3072

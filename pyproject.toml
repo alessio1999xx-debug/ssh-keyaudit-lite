@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ssh-keyaudit-lite"
-version = "0.1.0"
+version = "0.1.1"
 description = "Audit an SSH authorized_keys file: SHA256 fingerprints, key type, bits, comment; flags DSA, weak RSA and comment-less keys. Read-only."
 readme = "README.md"
 license = "MIT"
@@ -41,8 +41,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alessio1999xx-debug/ssh-keyaudit-lite"
-"Pro version" = "https://py-forge.com/products/ssh-keyaudit-fleet-key-inventory"
+Homepage = "https://py-forge.com/products/ssh-keyaudit-fleet-key-inventory?utm_source=pypi&utm_medium=project_page&utm_campaign=ssh-keyaudit-lite"
+Source = "https://github.com/alessio1999xx-debug/ssh-keyaudit-lite"
+Repository = "https://github.com/alessio1999xx-debug/ssh-keyaudit-lite"
 
 [project.scripts]
 ssh-keyaudit-lite = "ssh_keyaudit_lite:main"
